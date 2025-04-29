@@ -1,0 +1,37 @@
+/* In your CSS module or global CSS file */
+@keyframes sway {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+.food-floating {
+  position: absolute;
+  z-index: -1;
+  width: 100px;
+  opacity: 0.3;
+  animation: sway 5s ease-in-out infinite;
+}
+
+.food-1 {
+  top: 10%;
+  left: 5%;
+}
+.food-2 {
+  top: 50%;
+  right: 10%;
+}
+.food-3 {
+  bottom: 20%;
+  left: 30%;
+}
+.food-4 {
+  top: 25%;
+  right: 25%;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -14,6 +14,7 @@ function RandomResult() {
   const restaurants = location.state?.restaurants || [];
   const [randomRestaurant, setRandomRestaurant] = useState(null);
   const { backgroundColor, textColor } = getRandomColor();
+  const navigate = useNavigate();
 
   useEffect(() => {
     selectRandom();
@@ -41,6 +42,9 @@ function RandomResult() {
       </Container>
     );
   }
+  const handleNewLocation = () => {
+    navigate("/"); // Navigates back to the EnterLocation page
+  };
 
   return (
     <Container
@@ -50,11 +54,11 @@ function RandomResult() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh", // Full viewport height
-        width: "100%", // Full width
+        height: "100vh",
+        width: "100%",
       }}
     >
-      <Card sx={{ backgroundColor: getRandomColor(), mb: 2, width: "100%" }}>
+      <Card sx={{ backgroundColor, color: textColor, mb: 2, width: "100%" }}>
         <CardContent>
           <Typography variant="h4" gutterBottom>
             {randomRestaurant.name}
@@ -63,9 +67,22 @@ function RandomResult() {
             {randomRestaurant.formatted_address}
           </Typography>
           {randomRestaurant.rating && (
-            <Typography variant="body1">
-              Rating: {randomRestaurant.rating}
-            </Typography>
+            <>
+              <Typography variant="body1">
+                Rating: {randomRestaurant.rating}
+              </Typography>
+              {randomRestaurant.place_id && (
+                <Typography variant="body1" gutterBottom>
+                  <a
+                    href={`https://www.google.com/maps/place/?q=place_id:${randomRestaurant.place_id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View on Google Maps
+                  </a>
+                </Typography>
+              )}
+            </>
           )}
         </CardContent>
       </Card>
@@ -73,15 +90,30 @@ function RandomResult() {
         variant="contained"
         onClick={selectRandom}
         sx={{
-          backgroundColor,
-          color: textColor,
+          backgroundColor: "#8d818c", // Or your desired color
+          color: "#fff", // Text color
+          mb: 2,
           transition: "0.2s",
           "&:hover": {
             opacity: 0.9,
           },
         }}
       >
-        Choose Again
+        Not feelin' it? Pick another!
+      </Button>
+      <Button
+        variant="contained"
+        onClick={handleNewLocation}
+        sx={{
+          backgroundColor: "#8d818c", // Or your desired color
+          color: "#fff", // Text color
+          transition: "0.2s",
+          "&:hover": {
+            opacity: 0.9,
+          },
+        }}
+      >
+        Enter a new Location
       </Button>
     </Container>
   );
