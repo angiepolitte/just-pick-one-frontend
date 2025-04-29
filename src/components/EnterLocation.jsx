@@ -1,0 +1,87 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  Typography,
+  Container,
+  Box,
+  TextField,
+  CircularProgress,
+} from "@mui/material";
+
+function EnterLocation() {
+  const [zipCode, setZipCode] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const handleSearch = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const url = `http://localhost:8080/api/restaurants?query=${encodeURIComponent(
+        zipCode
+      )}`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.status === "OK") {
+        navigate("/results", {
+          state: { restaurants: data.results },
+        });
+      } else {
+        setError(data.status);
+      }
+    } catch (err) {
+      setError(err.message || "An error occurred.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") handleSearch();
+  };
+
+  return (
+    <Container maxWidth="sm" sx={{ mt: 6 }}>
+      <Box
+        sx={{
+          p: 4,
+          bgcolor: "#8d818c",
+          borderRadius: 2,
+          textAlign: "center",
+          boxShadow: 3,
+        }}
+      >
+        <Typography variant="h4" gutterBottom color="#e9ebf8">
+          Just Pick One!
+        </Typography>
+        <TextField
+          fullWidth
+          label="Enter Zip Code"
+          variant="outlined"
+          value={zipCode}
+          onChange={(e) => setZipCode(e.target.value)}
+          onKeyDown={handleKeyDown}
+          sx={{ mt: 2, backgroundColor: "#fff", borderRadius: 1 }}
+        />
+        <Button
+          variant="contained"
+          onClick={handleSearch}
+          disabled={loading}
+          sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
+        >
+          {loading ? <CircularProgress size={24} /> : "Search Restaurants"}
+        </Button>
+        {error && (
+          <Typography variant="body2" color="error" sx={{ mt: 2 }}>
+            Error: {error}
+          </Typography>
+        )}
+      </Box>
+    </Container>
+  );
+}
+
+export default EnterLocation;
