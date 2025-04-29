@@ -35,7 +35,15 @@ function Results() {
   }
 
   return (
-    <Container sx={{ mt: 4 }}>
+    <Container
+      sx={{
+        mt: 4,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Typography variant="h4" gutterBottom>
         Restaurant Results:
       </Typography>
@@ -49,9 +57,11 @@ function Results() {
           "&:hover": {
             opacity: 0.9,
           },
+          mt: 2,
+          mb: 3,
         }}
       >
-        Just Pick One!
+        Just Pick A Place So we Can Eat!!
       </Button>
       <Grid container spacing={2} justifyContent="center">
         {restaurants.map((restaurant) => (
@@ -77,6 +87,17 @@ function Results() {
                 {restaurant.rating && (
                   <Typography variant="body2">
                     Rating: {restaurant.rating}
+                  </Typography>
+                )}
+                {restaurant.place_id && (
+                  <Typography variant="body1" gutterBottom>
+                    <a
+                      href={`https://www.google.com/maps/place/?q=place_id:${restaurant.place_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View on Google Maps
+                    </a>
                   </Typography>
                 )}
               </CardContent>
