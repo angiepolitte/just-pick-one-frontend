@@ -17,27 +17,33 @@ function EnterLocation() {
   const navigate = useNavigate();
 
   const handleSearch = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const url = `https://web-production-70c9.up.railway.app/api/restaurants?query=${encodeURIComponent(
-        // const url = `http://localhost:8080/api/restaurants?query=${encodeURIComponent(
-        zipCode
-      )}`;
-      const response = await fetch(url);
-      const data = await response.json();
+    const trimmedZip = zipCode.trim(); // <-- corrected here
 
-      if (data.status === "OK") {
-        navigate("/results", {
-          state: { restaurants: data.results },
-        });
-      } else {
-        setError(data.status);
+    if (/^\d{5}$/.test(trimmedZip)) {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const url = `https://web-production-70c9.up.railway.app/api/restaurants?query=${encodeURIComponent(
+          trimmedZip
+        )}`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.status === "OK") {
+          navigate("/results", {
+            state: { restaurants: data.results },
+          });
+        } else {
+          setError(data.status);
+        }
+      } catch (err) {
+        setError(err.message || "An error occurred.");
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      setError(err.message || "An error occurred.");
-    } finally {
-      setLoading(false);
+    } else {
+      alert("Invalid ZIP code format. Please enter exactly 5 digits.");
     }
   };
 
