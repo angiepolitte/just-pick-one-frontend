@@ -95,8 +95,7 @@ function EnterLocation() {
         </Typography>
         <TextField
           fullWidth
-          label="Enter Zip Code"
-          variant="outlined"
+          placeholder="Enter Zip Code"
           value={zipCode}
           onChange={(e) => setZipCode(e.target.value)}
           onKeyDown={handleKeyDown}

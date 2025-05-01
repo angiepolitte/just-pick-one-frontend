@@ -44,7 +44,11 @@ function Results() {
         alignItems: "center",
       }}
     >
-      <Typography variant="h4" gutterBottom>
+      <Typography
+        variant="h3"
+        align="center"
+        sx={{ fontFamily: "Fredoka", color: "#413C58", mb: 2 }}
+      >
         Restaurant Results:
       </Typography>
       <Button
@@ -57,6 +61,7 @@ function Results() {
           "&:hover": {
             opacity: 0.9,
           },
+          fontFamily: "Fredoka",
           mt: 2,
           mb: 3,
         }}
