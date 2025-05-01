@@ -97,10 +97,15 @@ function Results() {
                 {restaurant.place_id && (
                   <Typography variant="body1" gutterBottom>
                     <a
-                      href={`https://www.google.com/maps/place/?q=place_id:${restaurant.place_id}`}
+                      href={`https://www.google.com/maps/search/?api=1&query_place_id=${restaurant.place_id}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
+                      {/* <a
+                      href={`https://www.google.com/maps/place/?q=place_id:${restaurant.place_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    > */}
                       View on Google Maps
                     </a>
                   </Typography>
