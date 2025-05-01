@@ -20,7 +20,8 @@ function EnterLocation() {
     setLoading(true);
     setError(null);
     try {
-      const url = `http://localhost:8080/api/restaurants?query=${encodeURIComponent(
+      const url = `https://web-production-70c9.up.railway.app/api/restaurants?query=${encodeURIComponent(
+        // const url = `http://localhost:8080/api/restaurants?query=${encodeURIComponent(
         zipCode
       )}`;
       const response = await fetch(url);
@@ -98,7 +99,31 @@ function EnterLocation() {
           value={zipCode}
           onChange={(e) => setZipCode(e.target.value)}
           onKeyDown={handleKeyDown}
-          sx={{ mt: 2, backgroundColor: "#fff", borderRadius: 1 }}
+          sx={{
+            mt: 2,
+            backgroundColor: "#fff",
+            borderRadius: 1,
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#ccc", // Border color when focused
+              },
+              "&:hover fieldset": {
+                borderColor: "#ccc", // Border color on hover
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#ccc", // Prevent blue outline on focus
+              },
+              "& .MuiInputBase-input": {
+                color: "#000", // Text color (normal and focused state)
+              },
+            },
+            "& .MuiInputLabel-root": {
+              color: "#000", // Label color (normal state)
+            },
+            "& .Mui-focused .MuiInputLabel-root": {
+              color: "#000", // Keep label color black when focused
+            },
+          }}
         />
         <Button
           variant="contained"
