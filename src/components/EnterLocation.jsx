@@ -54,8 +54,8 @@ function EnterLocation() {
         alignItems: "center", // Vertically centers the content
         flexDirection: "column",
         height: "100vh", // Full viewport height
-        paddingTop: "20px",
-        // margin: "auto", // Center content horizontally
+        // paddingTop: "20px",
+        margin: "auto", // Center content horizontally
       }}
     >
       <Typography
