@@ -74,7 +74,9 @@ function RandomResult() {
               {randomRestaurant.place_id && (
                 <Typography variant="body1" gutterBottom>
                   <a
-                    href={`https://www.google.com/maps/search/?api=1&query_place_id=${randomRestaurant.place_id}`}
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      `${randomRestaurant.name} ${randomRestaurant.formatted_address}`
+                    )}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
