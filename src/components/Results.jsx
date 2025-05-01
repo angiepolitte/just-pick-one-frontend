@@ -49,7 +49,7 @@ function Results() {
         align="center"
         sx={{ fontFamily: "Fredoka", color: "#413C58", mb: 2 }}
       >
-        Restaurant Results:
+        Restaurants in the Area:
       </Typography>
       <Button
         variant="contained"
@@ -66,7 +66,7 @@ function Results() {
           mb: 3,
         }}
       >
-        Just Pick A Place So we Can Eat!!
+        Click Here to Let Fate Decide!
       </Button>
       <Grid container spacing={2} justifyContent="center">
         {restaurants.map((restaurant) => (
