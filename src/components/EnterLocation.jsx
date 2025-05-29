@@ -80,7 +80,7 @@ function EnterLocation() {
       },
       (error) => {
         setError(
-          "Unable to retrieve your location.  Please update your location services."
+          "Unable to retrieve your location.  Please update your location services in Settings."
         );
         setLoading(false);
       }
