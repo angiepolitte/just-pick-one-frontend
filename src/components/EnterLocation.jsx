@@ -9,6 +9,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import foodSpinnerLottie from "../assets/food-loader/my-food-spinner.lottie";
 import "@fontsource/fredoka"; // Fun Google Font
 
 function EnterLocation() {
@@ -183,7 +184,7 @@ function EnterLocation() {
           >
             {loading ? (
               <DotLottieReact
-                src="/assets/food-loader/my-food-spinner.lottie" // Adjust filename as needed
+                src={foodSpinnerLottie}
                 loop
                 autoplay
                 style={{ height: 24, width: 24 }}
@@ -200,7 +201,7 @@ function EnterLocation() {
           >
             {loading ? (
               <DotLottieReact
-                src="/assets/food-loader/my-food-spinner.lottie" // Adjust filename as needed
+                src={foodSpinnerLottie}
                 loop
                 autoplay
                 style={{ height: 24, width: 24 }}
