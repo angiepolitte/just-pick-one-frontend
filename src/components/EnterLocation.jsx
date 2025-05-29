@@ -8,8 +8,8 @@ import {
   TextField,
   CircularProgress,
 } from "@mui/material";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import foodSpinnerLottie from "../assets/food-loader/my-food-spinner.lottie";
+// import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+// import foodSpinnerLottie from "../assets/food-loader/my-food-spinner.lottie";
 import "@fontsource/fredoka"; // Fun Google Font
 
 function EnterLocation() {
@@ -183,12 +183,7 @@ function EnterLocation() {
             sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
           >
             {loading ? (
-              <DotLottieReact
-                src={foodSpinnerLottie}
-                loop
-                autoplay
-                style={{ height: 24, width: 24 }}
-              />
+              <CircularProgress size={24} color="secondary" />
             ) : (
               "Search Restaurants"
             )}
@@ -200,12 +195,7 @@ function EnterLocation() {
             sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
           >
             {loading ? (
-              <DotLottieReact
-                src={foodSpinnerLottie}
-                loop
-                autoplay
-                style={{ height: 24, width: 24 }}
-              />
+              <CircularProgress size={24} color="secondary" />
             ) : (
               "Use My Current Location"
             )}
