@@ -79,7 +79,9 @@ function EnterLocation() {
         }
       },
       (error) => {
-        setError("Unable to retrieve your location");
+        setError(
+          "Unable to retrieve your location.  Please update your location services."
+        );
         setLoading(false);
       }
     );
@@ -183,7 +185,7 @@ function EnterLocation() {
             sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
           >
             {loading ? (
-              <CircularProgress size={24} color="secondary" />
+              <CircularProgress size={24} color="#000" />
             ) : (
               "Search Restaurants"
             )}
@@ -195,7 +197,7 @@ function EnterLocation() {
             sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
           >
             {loading ? (
-              <CircularProgress size={24} color="secondary" />
+              <CircularProgress size={24} color="#000" />
             ) : (
               "Use My Current Location"
             )}
