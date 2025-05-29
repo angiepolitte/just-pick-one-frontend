@@ -8,6 +8,7 @@ import {
   TextField,
   CircularProgress,
 } from "@mui/material";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "@fontsource/fredoka"; // Fun Google Font
 
 function EnterLocation() {
@@ -180,7 +181,16 @@ function EnterLocation() {
             disabled={loading}
             sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
           >
-            {loading ? <CircularProgress size={24} /> : "Search Restaurants"}
+            {loading ? (
+              <DotLottieReact
+                src="/assets/food-loader/my-food-spinner.lottie" // Adjust filename as needed
+                loop
+                autoplay
+                style={{ height: 24, width: 24 }}
+              />
+            ) : (
+              "Search Restaurants"
+            )}
           </Button>
           <Button
             variant="contained"
@@ -188,7 +198,16 @@ function EnterLocation() {
             disabled={loading}
             sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
           >
-            Use My Current Location
+            {loading ? (
+              <DotLottieReact
+                src="/assets/food-loader/my-food-spinner.lottie" // Adjust filename as needed
+                loop
+                autoplay
+                style={{ height: 24, width: 24 }}
+              />
+            ) : (
+              "Use My Current Location"
+            )}
           </Button>
         </Box>
         {error && (
