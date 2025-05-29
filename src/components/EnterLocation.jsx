@@ -46,6 +46,42 @@ function EnterLocation() {
       alert("Invalid ZIP code format. Please enter exactly 5 digits.");
     }
   };
+  //searching by location services-no zip code
+  const handleUseMyLocation = () => {
+    setLoading(true);
+    setError(null);
+
+    if (!navigator.geolocation) {
+      setError("Geolocation is not supported by your browser");
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          const url = `https://web-production-70c9.up.railway.app/api/restaurants/location?lat=${latitude}&lng=${longitude}`;
+          const response = await fetch(url);
+          const data = await response.json();
+
+          if (data.status === "OK") {
+            navigate("/results", {
+              state: { restaurants: data.results },
+            });
+          } else {
+            setError(data.status);
+          }
+        } catch (err) {
+          setError(err.message || "An Error Occurred.");
+        } finally {
+          setLoading(false);
+        }
+      },
+      (error) => {
+        setError("Unable to retrieve your location");
+        setLoading(false);
+      }
+    );
+  };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") handleSearch();
@@ -131,14 +167,30 @@ function EnterLocation() {
             },
           }}
         />
-        <Button
-          variant="contained"
-          onClick={handleSearch}
-          disabled={loading}
-          sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
+        <Box
+          display="flex"
+          flexDirection="row"
+          gap={2}
+          mt={3}
+          justifyContent="center"
         >
-          {loading ? <CircularProgress size={24} /> : "Search Restaurants"}
-        </Button>
+          <Button
+            variant="contained"
+            onClick={handleSearch}
+            disabled={loading}
+            sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
+          >
+            {loading ? <CircularProgress size={24} /> : "Search Restaurants"}
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleUseMyLocation}
+            disabled={loading}
+            sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
+          >
+            Use My Current Location
+          </Button>
+        </Box>
         {error && (
           <Typography variant="body2" color="error" sx={{ mt: 2 }}>
             Error: {error}
