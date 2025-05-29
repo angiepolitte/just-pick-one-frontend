@@ -69,7 +69,7 @@ function EnterLocation() {
         align="center"
         sx={{ fontFamily: "Fredoka", color: "#413C58", mb: 2 }}
       >
-        Just Pick One, Already!
+        What's for Dinner?
       </Typography>
 
       <Typography
