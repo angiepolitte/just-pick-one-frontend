@@ -107,7 +107,7 @@ function EnterLocation() {
         align="center"
         sx={{ fontFamily: "Fredoka", color: "#413C58", mb: 2 }}
       >
-        What's for Dinner?
+        Fork and Fate
       </Typography>
 
       <Typography
