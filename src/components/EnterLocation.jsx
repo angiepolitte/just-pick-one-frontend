@@ -105,14 +105,9 @@ function EnterLocation() {
       }}
     >
       <Typography
-        variant="h3"
+        variant="h2"
         align="center"
-        sx={{
-          fontFamily: "Fredoka",
-          color: "#413C58",
-          mb: 2,
-          fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
-        }}
+        sx={{ fontFamily: "Fredoka", color: "#413C58", mb: 2 }}
       >
         Fork and Fate
       </Typography>
@@ -122,8 +117,11 @@ function EnterLocation() {
         align="center"
         sx={{ fontFamily: "Fredoka", color: "#6D597A", mb: 4 }}
       >
-        Can’t decide where to eat? Let fate choose for you! Enter your location
-        and we’ll randomly pick a restaurant nearby.
+        Can’t decide where to eat?
+        <br />
+        Let fate choose for you!
+        <br />
+        Enter your location and we’ll randomly pick a restaurant nearby.
       </Typography>
 
       {/* Main Search Box */}
