@@ -105,7 +105,7 @@ function EnterLocation() {
       }}
     >
       <Typography
-        variant="h2"
+        variant="h3"
         align="center"
         sx={{
           fontFamily: "Fredoka",
@@ -122,11 +122,8 @@ function EnterLocation() {
         align="center"
         sx={{ fontFamily: "Fredoka", color: "#6D597A", mb: 4 }}
       >
-        Can’t decide where to eat?
-        <br />
-        Let fate choose for you!
-        <br />
-        Enter your location and we’ll randomly pick a restaurant nearby.
+        Can’t decide where to eat? Let fate choose for you! Enter your location
+        and we’ll randomly pick a restaurant nearby.
       </Typography>
 
       {/* Main Search Box */}
