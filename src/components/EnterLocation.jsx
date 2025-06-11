@@ -91,6 +91,7 @@ function EnterLocation() {
 
   return (
     <Container
+      role="main"
       maxWidth="sm"
       sx={{
         display: "flex",
@@ -103,7 +104,7 @@ function EnterLocation() {
       }}
     >
       <Typography
-        variant="h3"
+        variant="h2"
         align="center"
         sx={{ fontFamily: "Fredoka", color: "#413C58", mb: 2 }}
       >
@@ -111,12 +112,15 @@ function EnterLocation() {
       </Typography>
 
       <Typography
-        variant="h6"
+        variant="h4"
         align="center"
         sx={{ fontFamily: "Fredoka", color: "#6D597A", mb: 4 }}
       >
-        Can’t decide where to eat? Let fate choose for you! Enter your location
-        and we’ll randomly pick a restaurant nearby.
+        Can’t decide where to eat?
+        <br />
+        Let fate choose for you!
+        <br />
+        Enter your location and we’ll randomly pick a restaurant nearby.
       </Typography>
 
       {/* Main Search Box */}
@@ -130,7 +134,7 @@ function EnterLocation() {
         }}
       >
         <Typography
-          variant="h4"
+          variant="h3"
           gutterBottom
           color="#e9ebf8"
           sx={{ fontFamily: "Fredoka" }}
@@ -139,7 +143,12 @@ function EnterLocation() {
         </Typography>
         <TextField
           fullWidth
-          placeholder="Enter Zip Code"
+          label="Zip Code"
+          inputProps={{
+            inputMode: "numeric",
+            pattern: "[0-9]{5}",
+            "aria-label": "Enter your 5-digit ZIP Code",
+          }}
           value={zipCode}
           onChange={(e) => setZipCode(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -179,8 +188,16 @@ function EnterLocation() {
           <Button
             variant="contained"
             onClick={handleSearch}
-            disabled={loading}
-            sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
+            aria-disabled={loading}
+            aria-label="Search restaurants by ZIP code"
+            sx={{
+              mt: 3,
+              bgcolor: "#e0e0f0",
+              color: "#000",
+              height: "56px",
+              fontSize: "1rem",
+              px: 3,
+            }}
           >
             {loading ? (
               <CircularProgress size={24} color="#E8EAF6" />
@@ -191,8 +208,16 @@ function EnterLocation() {
           <Button
             variant="contained"
             onClick={handleUseMyLocation}
-            disabled={loading}
-            sx={{ mt: 3, bgcolor: "#e9ebf8", color: "#000" }}
+            aria-disabled={loading}
+            aria-label="Search restaurants by current location"
+            sx={{
+              mt: 3,
+              bgcolor: "#e0e0f0",
+              color: "#000",
+              height: "56px",
+              fontSize: "1rem",
+              px: 3,
+            }}
           >
             {loading ? (
               <CircularProgress size={24} color="#E8EAF6" />
@@ -201,11 +226,13 @@ function EnterLocation() {
             )}
           </Button>
         </Box>
-        {error && (
-          <Typography variant="body2" color="error" sx={{ mt: 2 }}>
-            Error: {error}
-          </Typography>
-        )}
+        <Box role="alert" aria-live="assertive">
+          {error && (
+            <Typography variant="body2" color="error" sx={{ mt: 2 }}>
+              Error: {error}
+            </Typography>
+          )}
+        </Box>
       </Box>
     </Container>
   );

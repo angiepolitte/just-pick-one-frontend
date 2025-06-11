@@ -36,6 +36,7 @@ function Results() {
 
   return (
     <Container
+      role="main"
       sx={{
         mt: 4,
         display: "flex",
@@ -47,6 +48,8 @@ function Results() {
       <Typography
         variant="h3"
         align="center"
+        role="heading"
+        aria-level="1"
         sx={{ fontFamily: "Fredoka", color: "#413C58", mb: 2 }}
       >
         Restaurants in the Area:
@@ -54,19 +57,28 @@ function Results() {
       <Button
         variant="contained"
         onClick={handleRandomRestaurant}
+        aria-label="Randomly choose a restaurant from the list"
         sx={{
-          backgroundColor,
+          backgroundColor: backgroundColor,
           color: textColor,
-          transition: "0.2s",
+          fontWeight: "bold",
+          fontSize: "1.2rem",
+          px: 4,
+          py: 2,
+          borderRadius: 3,
+          boxShadow: "0px 4px 10px rgba(0,0,0,0.2)",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
           "&:hover": {
-            opacity: 0.9,
+            transform: "scale(1.05)",
+            boxShadow: "0px 6px 14px rgba(0,0,0,0.3)",
+            opacity: 0.95,
           },
           fontFamily: "Fredoka",
           mt: 2,
           mb: 3,
         }}
       >
-        Click Here to Let Fate Decide!
+        Let Fate Decide!
       </Button>
       <Grid container spacing={2} justifyContent="center">
         {restaurants.map((restaurant) => (
