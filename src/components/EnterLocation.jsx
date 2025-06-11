@@ -95,18 +95,24 @@ function EnterLocation() {
       maxWidth="sm"
       sx={{
         display: "flex",
-        justifyContent: "center", // Horizontally centers the content
-        alignItems: "center", // Vertically centers the content
         flexDirection: "column",
-        height: "100vh", // Full viewport height
-        // paddingTop: "20px",
-        margin: "auto", // Center content horizontally
+        justifyContent: "flex-start",
+        alignItems: "center",
+        minHeight: "100vh",
+        py: 4,
+        px: 2,
+        overflowY: "auto",
       }}
     >
       <Typography
         variant="h2"
         align="center"
-        sx={{ fontFamily: "Fredoka", color: "#413C58", mb: 2 }}
+        sx={{
+          fontFamily: "Fredoka",
+          color: "#413C58",
+          mb: 2,
+          fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
+        }}
       >
         Fork and Fate
       </Typography>
@@ -126,11 +132,13 @@ function EnterLocation() {
       {/* Main Search Box */}
       <Box
         sx={{
-          p: 4,
+          p: { xs: 2, sm: 3, md: 4 },
           bgcolor: "#8d818c",
           borderRadius: 2,
           textAlign: "center",
           boxShadow: 3,
+          width: "100%",
+          maxWidth: 500,
         }}
       >
         <Typography
@@ -180,23 +188,25 @@ function EnterLocation() {
         />
         <Box
           display="flex"
-          flexDirection="row"
+          flexDirection={{ xs: "column", sm: "row" }}
           gap={2}
           mt={3}
           justifyContent="center"
+          alignItems="center"
         >
           <Button
             variant="contained"
             onClick={handleSearch}
             aria-disabled={loading}
             aria-label="Search restaurants by ZIP code"
+            fullWidth={true}
             sx={{
-              mt: 3,
-              bgcolor: "#e0e0f0",
-              color: "#000",
+              mt: { xs: 1, sm: 3 },
               height: "56px",
               fontSize: "1rem",
               px: 3,
+              bgcolor: "#e0e0f0",
+              color: "#000",
             }}
           >
             {loading ? (
@@ -210,13 +220,14 @@ function EnterLocation() {
             onClick={handleUseMyLocation}
             aria-disabled={loading}
             aria-label="Search restaurants by current location"
+            fullWidth={true}
             sx={{
-              mt: 3,
-              bgcolor: "#e0e0f0",
-              color: "#000",
+              mt: { xs: 1, sm: 3 },
               height: "56px",
               fontSize: "1rem",
               px: 3,
+              bgcolor: "#e0e0f0",
+              color: "#000",
             }}
           >
             {loading ? (
