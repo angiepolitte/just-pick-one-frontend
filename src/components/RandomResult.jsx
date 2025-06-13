@@ -102,6 +102,7 @@ function RandomResult() {
         className="shared-button"
         disableElevation
         disableRipple
+        sx={{ mb: 1 }}
       >
         Not feelin' it? Pick another!
       </Button>
@@ -112,6 +113,7 @@ function RandomResult() {
         className="shared-button"
         disableElevation
         disableRipple
+        sx={{ mb: 1 }}
       >
         Start your search over
       </Button>

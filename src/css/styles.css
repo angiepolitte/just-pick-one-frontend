@@ -37,6 +37,8 @@
   border: none !important;
   cursor: pointer;
   box-shadow: none !important; /* Removes MUI elevation shadow */
+
+  gap: 2px;
 }
 
 .shared-button:hover {
@@ -67,4 +69,10 @@
   font-size: 1rem;
   border-top: 1px solid #ccc;
   z-index: 1000;
+
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center; /* centers vertically */
+  /* Remove line-height since flexbox handles vertical centering */
+  line-height: normal;
 }

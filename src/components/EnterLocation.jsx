@@ -102,6 +102,7 @@ function EnterLocation() {
         minHeight: "100vh",
         py: 4,
         px: 2,
+        pb: 8,
         overflowY: "auto",
       }}
     >
@@ -130,7 +131,7 @@ function EnterLocation() {
         }}
       >
         <Typography
-          variant="h3"
+          variant="h4"
           gutterBottom
           color="#e9ebf8"
           sx={{ fontFamily: "Fredoka" }}
