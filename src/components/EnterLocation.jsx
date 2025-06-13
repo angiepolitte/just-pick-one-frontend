@@ -8,7 +8,8 @@ import {
   TextField,
   CircularProgress,
 } from "@mui/material";
-import "@fontsource/fredoka"; // Fun Google Font
+import "@fontsource/fredoka";
+import "/src/css/styles.css";
 
 function EnterLocation() {
   const [zipCode, setZipCode] = useState("");
@@ -104,19 +105,11 @@ function EnterLocation() {
         overflowY: "auto",
       }}
     >
-      <Typography
-        variant="h2"
-        align="center"
-        sx={{ fontFamily: "Fredoka", color: "#413C58", mb: 2 }}
-      >
+      <Typography variant="h2" align="center" className="heading">
         Fork and Fate
       </Typography>
 
-      <Typography
-        variant="h4"
-        align="center"
-        sx={{ fontFamily: "Fredoka", color: "#6D597A", mb: 4 }}
-      >
+      <Typography variant="h4" align="center" className="subheading">
         Can’t decide where to eat?
         <br />
         Let fate choose for you!
@@ -142,7 +135,11 @@ function EnterLocation() {
           color="#e9ebf8"
           sx={{ fontFamily: "Fredoka" }}
         >
-          Because choosing is hard, but eating is easy
+          Choosing is hard
+          <br />
+          ~
+          <br />
+          Eating is easy
         </Typography>
         <TextField
           fullWidth
@@ -190,19 +187,14 @@ function EnterLocation() {
           alignItems="center"
         >
           <Button
-            variant="contained"
+            variant="text"
             onClick={handleSearch}
             aria-disabled={loading}
             aria-label="Search restaurants by ZIP code"
             fullWidth={true}
-            sx={{
-              mt: { xs: 1, sm: 3 },
-              height: "56px",
-              fontSize: "1rem",
-              px: 3,
-              bgcolor: "#e0e0f0",
-              color: "#000",
-            }}
+            className="shared-button"
+            disableElevation
+            disableRipple
           >
             {loading ? (
               <CircularProgress size={24} color="#E8EAF6" />
@@ -211,19 +203,14 @@ function EnterLocation() {
             )}
           </Button>
           <Button
-            variant="contained"
+            variant="text"
             onClick={handleUseMyLocation}
             aria-disabled={loading}
             aria-label="Search restaurants by current location"
             fullWidth={true}
-            sx={{
-              mt: { xs: 1, sm: 3 },
-              height: "56px",
-              fontSize: "1rem",
-              px: 3,
-              bgcolor: "#e0e0f0",
-              color: "#000",
-            }}
+            className="shared-button"
+            disableElevation
+            disableRipple
           >
             {loading ? (
               <CircularProgress size={24} color="#E8EAF6" />

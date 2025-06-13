@@ -28,6 +28,9 @@ function App() {
           <Route path="/random-result" element={<RandomResult />} />
         </Routes>
       </BrowserRouter>
+      <footer className="app-footer">
+        <p>A Work In Progress by Angie Politte © 2025</p>
+      </footer>
     </>
   );
 }

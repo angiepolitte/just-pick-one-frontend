@@ -48,6 +48,7 @@ function RandomResult() {
 
   return (
     <Container
+      role="main"
       maxWidth="sm"
       sx={{
         display: "flex",
@@ -59,7 +60,7 @@ function RandomResult() {
       }}
     >
       <Card sx={{ backgroundColor, color: textColor, mb: 2, width: "100%" }}>
-        <CardContent>
+        <CardContent aria-live="polite">
           <Typography variant="h4" gutterBottom>
             {randomRestaurant.name}
           </Typography>
@@ -79,6 +80,7 @@ function RandomResult() {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`View ${randomRestaurant.name} on Google Maps`}
                   >
                     {/* <a
                     href={`https://www.google.com/maps/place/?q=place_id:${randomRestaurant.place_id}`}
@@ -94,33 +96,24 @@ function RandomResult() {
         </CardContent>
       </Card>
       <Button
-        variant="contained"
+        variant="text"
         onClick={selectRandom}
-        sx={{
-          backgroundColor: "#8d818c", // Or your desired color
-          color: "#fff", // Text color
-          mb: 2,
-          transition: "0.2s",
-          "&:hover": {
-            opacity: 0.9,
-          },
-        }}
+        aria-label="Pick another random restaurant"
+        className="shared-button"
+        disableElevation
+        disableRipple
       >
         Not feelin' it? Pick another!
       </Button>
       <Button
-        variant="contained"
+        variant="text"
         onClick={handleNewLocation}
-        sx={{
-          backgroundColor: "#8d818c", // Or your desired color
-          color: "#fff", // Text color
-          transition: "0.2s",
-          "&:hover": {
-            opacity: 0.9,
-          },
-        }}
+        aria-label="Start your search over"
+        className="shared-button"
+        disableElevation
+        disableRipple
       >
-        Enter a new Location
+        Start your search over
       </Button>
     </Container>
   );
