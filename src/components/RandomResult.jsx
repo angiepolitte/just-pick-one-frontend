@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Container,
-  Button,
-} from "@mui/material";
 import { getRandomColor } from "./Colors";
+import "@fontsource/fredoka";
+import "/src/css/styles.css";
 
 function RandomResult() {
   const location = useLocation();
@@ -29,17 +24,9 @@ function RandomResult() {
 
   if (!randomRestaurant) {
     return (
-      <Container
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh", // Full viewport height
-          width: "100%", // Full width
-        }}
-      >
-        <Typography variant="body1">No restaurant selected.</Typography>
-      </Container>
+      <div className={styles.container - no - results}>
+        <p>No restaurant results found.</p>
+      </div>
     );
   }
   const handleNewLocation = () => {
@@ -47,33 +34,19 @@ function RandomResult() {
   };
 
   return (
-    <Container
-      role="main"
-      maxWidth="sm"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        width: "100%",
-      }}
-    >
-      <Card sx={{ backgroundColor, color: textColor, mb: 2, width: "100%" }}>
-        <CardContent aria-live="polite">
-          <Typography variant="h4" gutterBottom>
-            {randomRestaurant.name}
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            {randomRestaurant.formatted_address}
-          </Typography>
+    <main className="container results-container" role="main">
+      <div
+        className="surprise-card-container"
+        style={{ backgroundColor: backgroundColor, color: textColor }}
+      >
+        <div className="card-content" aria-live="polite">
+          <h2 className="results-title">{randomRestaurant.name}</h2>
+          <p>{randomRestaurant.formatted_address}</p>
           {randomRestaurant.rating && (
             <>
-              <Typography variant="body1">
-                Rating: {randomRestaurant.rating}
-              </Typography>
+              <p>Rating: {randomRestaurant.rating}</p>
               {randomRestaurant.place_id && (
-                <Typography variant="body1" gutterBottom>
+                <p>
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                       `${randomRestaurant.name} ${randomRestaurant.formatted_address}`
@@ -82,42 +55,31 @@ function RandomResult() {
                     rel="noopener noreferrer"
                     aria-label={`View ${randomRestaurant.name} on Google Maps`}
                   >
-                    {/* <a
-                    href={`https://www.google.com/maps/place/?q=place_id:${randomRestaurant.place_id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  > */}
                     View on Google Maps
                   </a>
-                </Typography>
+                </p>
               )}
             </>
           )}
-        </CardContent>
-      </Card>
-      <Button
-        variant="text"
-        onClick={selectRandom}
-        aria-label="Pick another random restaurant"
-        className="shared-button"
-        disableElevation
-        disableRipple
-        sx={{ mb: 1 }}
-      >
-        Not feelin' it? Pick another!
-      </Button>
-      <Button
-        variant="text"
-        onClick={handleNewLocation}
-        aria-label="Start your search over"
-        className="shared-button"
-        disableElevation
-        disableRipple
-        sx={{ mb: 1 }}
-      >
-        Start your search over
-      </Button>
-    </Container>
+        </div>
+      </div>
+      <div className="buttons">
+        <button
+          className="shared-button"
+          aria-label="Pick another random restaurant"
+          onClick={selectRandom}
+        >
+          Not really feelin' it? Pick another!
+        </button>
+        <button
+          className="shared-button"
+          aria-label="Start your search over"
+          onClick={handleNewLocation}
+        >
+          Start your search over
+        </button>
+      </div>
+    </main>
   );
 }
 
