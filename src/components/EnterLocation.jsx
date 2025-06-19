@@ -116,22 +116,14 @@ function EnterLocation() {
             inputMode="numeric"
           />
         </div>
-        <div
-          className="buttons"
-          display="flex"
-          flexDirection={{ xs: "column", sm: "row" }}
-          gap={2}
-          mt={3}
-          justifyContent="center"
-          alignItems="center"
-        >
+        <div className="buttons">
           <button
             className="shared-button"
             onClick={handleSearch}
             aria-disabled={loading}
             aria-label="Search restaurants by ZIP code"
           >
-            {loading ? <span className="loader" /> : "Search Restaurants"}
+            {loading ? <span className="pulse-ring" /> : "Search Restaurants"}
           </button>
           <button
             className="shared-button"
@@ -139,7 +131,7 @@ function EnterLocation() {
             aria-disabled={loading}
             aria-label="Search restaurants by current location"
           >
-            {loading ? <span className="loader" /> : "Use Current Location"}
+            {loading ? <span className="pulse-ring" /> : "Use Current Location"}
           </button>
         </div>
         {error && (
