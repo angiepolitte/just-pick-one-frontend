@@ -1,13 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Button,
-  Typography,
-  Container,
-  Box,
-  TextField,
-  CircularProgress,
-} from "@mui/material";
 import "@fontsource/fredoka";
 import "/src/css/styles.css";
 
@@ -91,95 +83,41 @@ function EnterLocation() {
   };
 
   return (
-    <Container
-      role="main"
-      maxWidth="sm"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        minHeight: "100vh",
-        py: 4,
-        px: 2,
-        pb: 8,
-        overflowY: "auto",
-      }}
-    >
-      <Typography variant="h2" align="center" className="heading">
-        Fork and Fate
-      </Typography>
+    <main className="container" role="main">
+      <h1 className="heading">Fork and Fate</h1>
 
-      <Typography variant="h4" align="center" className="subheading">
+      <h2 className="subheading">
         Can’t decide where to eat?
         <br />
         Let fate choose for you!
         <br />
         Enter your location and we’ll randomly pick a restaurant nearby.
-      </Typography>
+      </h2>
 
       {/* Main Search Box */}
-      <Box
-        sx={{
-          p: { xs: 2, sm: 3, md: 4 },
-          bgcolor: "#8d818c",
-          borderRadius: 2,
-          textAlign: "center",
-          boxShadow: 3,
-          width: "100%",
-          maxWidth: 500,
-        }}
-      >
-        <Typography
-          variant="h4"
-          gutterBottom
-          color="#e9ebf8"
-          sx={{ fontFamily: "Fredoka" }}
-        >
+      <div className="box">
+        <h2 style={{ color: "#e9ebf8", fontFamily: "Fredoka" }}>
           Choosing is hard
           <br />
           ~
           <br />
           Eating is easy
-        </Typography>
-        <TextField
-          fullWidth
-          label="Zip Code"
-          inputProps={{
-            inputMode: "numeric",
-            pattern: "[0-9]{5}",
-            "aria-label": "Enter your 5-digit ZIP Code",
-          }}
-          value={zipCode}
-          onChange={(e) => setZipCode(e.target.value)}
-          onKeyDown={handleKeyDown}
-          sx={{
-            mt: 2,
-            backgroundColor: "#fff",
-            borderRadius: 1,
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "#ccc", // Border color when focused
-              },
-              "&:hover fieldset": {
-                borderColor: "#ccc", // Border color on hover
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "#ccc", // Prevent blue outline on focus
-              },
-              "& .MuiInputBase-input": {
-                color: "#000", // Text color (normal and focused state)
-              },
-            },
-            "& .MuiInputLabel-root": {
-              color: "#000", // Label color (normal state)
-            },
-            "& .Mui-focused .MuiInputLabel-root": {
-              color: "#000", // Keep label color black when focused
-            },
-          }}
-        />
-        <Box
+        </h2>
+        <div className="form-group">
+          <input
+            type="text"
+            className="input"
+            placeholder="Zip Code"
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value)}
+            onKeyDown={handleKeyDown}
+            aria-label="Enter your 5-digit ZIP Code"
+            pattern="[0-9]{5}"
+            inputMode="numeric"
+          />
+        </div>
+        <div
+          className="buttons"
           display="flex"
           flexDirection={{ xs: "column", sm: "row" }}
           gap={2}
@@ -187,48 +125,34 @@ function EnterLocation() {
           justifyContent="center"
           alignItems="center"
         >
-          <Button
-            variant="text"
+          <button
+            className="shared-button"
             onClick={handleSearch}
             aria-disabled={loading}
             aria-label="Search restaurants by ZIP code"
-            fullWidth={true}
-            className="shared-button"
-            disableElevation
-            disableRipple
           >
-            {loading ? (
-              <CircularProgress size={24} color="#E8EAF6" />
-            ) : (
-              "Search Restaurants"
-            )}
-          </Button>
-          <Button
-            variant="text"
+            {loading ? <span className="loader" /> : "Search Restaurants"}
+          </button>
+          <button
+            className="shared-button"
             onClick={handleUseMyLocation}
             aria-disabled={loading}
             aria-label="Search restaurants by current location"
-            fullWidth={true}
-            className="shared-button"
-            disableElevation
-            disableRipple
           >
-            {loading ? (
-              <CircularProgress size={24} color="#E8EAF6" />
-            ) : (
-              "Use Current Location"
-            )}
-          </Button>
-        </Box>
-        <Box role="alert" aria-live="assertive">
-          {error && (
-            <Typography variant="body2" color="error" sx={{ mt: 2 }}>
-              Error: {error}
-            </Typography>
-          )}
-        </Box>
-      </Box>
-    </Container>
+            {loading ? <span className="loader" /> : "Use Current Location"}
+          </button>
+        </div>
+        {error && (
+          <div
+            role="alert"
+            aria-live="assertive"
+            style={{ marginTop: "1rem", color: "red" }}
+          >
+            Error: {error}
+          </div>
+        )}
+      </div>
+    </main>
   );
 }
 
