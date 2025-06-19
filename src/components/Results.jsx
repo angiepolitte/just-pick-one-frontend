@@ -22,7 +22,7 @@ function Results() {
 
   if (restaurants.length === 0) {
     return (
-      <div className="container-no-results">
+      <div className="container no-results">
         <p>No restaurant results found.</p>
       </div>
     );

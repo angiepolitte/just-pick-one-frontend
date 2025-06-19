@@ -24,7 +24,7 @@ function RandomResult() {
 
   if (!randomRestaurant) {
     return (
-      <div className={styles.container - no - results}>
+      <div className="container no-results">
         <p>No restaurant results found.</p>
       </div>
     );
@@ -39,8 +39,10 @@ function RandomResult() {
         className="surprise-card-container"
         style={{ backgroundColor: backgroundColor, color: textColor }}
       >
-        <div className="card-content" aria-live="polite">
-          <h2 className="results-title">{randomRestaurant.name}</h2>
+        <div className="card-content fade-in" aria-live="polite">
+          <h1 className="results-title" role="heading" aria-level="1">
+            {randomRestaurant.name}
+          </h1>
           <p>{randomRestaurant.formatted_address}</p>
           {randomRestaurant.rating && (
             <>
