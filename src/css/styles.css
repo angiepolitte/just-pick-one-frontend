@@ -4,7 +4,7 @@
   font-family: "Fredoka", sans-serif;
   color: #413c58;
   margin-bottom: 1rem;
-  font-size: 2.5rem; /* default for large screens */
+  font-size: 3rem; /* default for large screens */
   text-align: center;
 }
 
@@ -12,7 +12,7 @@
   font-family: "Fredoka", sans-serif;
   color: #6d597a;
   margin-bottom: 2rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center;
 }
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "@fontsource/fredoka";
 import "/src/css/styles.css";
 
 function EnterLocation() {
@@ -96,7 +95,7 @@ function EnterLocation() {
 
       {/* Main Search Box */}
       <div className="box">
-        <h2 style={{ color: "#e9ebf8", fontFamily: "Fredoka" }}>
+        <h2 style={{ color: "#e9ebf8", fontSize: "2rem" }}>
           Choosing is hard
           <br />
           ~

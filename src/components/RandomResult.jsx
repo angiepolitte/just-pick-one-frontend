@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getRandomColor } from "./Colors";
-import "@fontsource/fredoka";
 import "/src/css/styles.css";
 
 function RandomResult() {
