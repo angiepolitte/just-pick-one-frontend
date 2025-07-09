@@ -77,7 +77,7 @@ function RandomResult() {
           aria-label="Start your search over"
           onClick={handleNewLocation}
         >
-          Start your search over
+          Start your search over!
         </button>
       </div>
     </main>
